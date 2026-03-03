@@ -46,11 +46,7 @@ Adjust the execution settings (Project Path, browser type, headless mode, etc.) 
 src/test/resources/config.properties
 
 ### Execution
-To run the entire suite in parallel via Maven:
 
-```Bash
-mvn clean test
-```
 To run via TestNG XML:
 Right-click tests.xml in your IDE and select Run. (Configure your <suite thread-count="12"> inside this file to match your machine's CPU cores for optimal performance).
 
