@@ -38,7 +38,7 @@ Engineered for extreme performance, this framework utilizes strictly isolated `T
 ### Installation
 Clone the repository:
 ```bash
-git clone [https://github.com/MostafaELFEEL/AutomationTesting_Project.git](https://github.com/MostafaELFEEL/AutomationTesting_Project.git)
+git clone https://github.com/MostafaELFEEL/AutomationTesting_Project.git
 cd AutomationTesting_Project
 ```
 ### Configuration
