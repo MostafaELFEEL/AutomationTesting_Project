@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="System Tests" parallel="methods" thread-count="12">
+    <listeners>
+            <listener class-name="TestHelperPack.TestListener"/>
+    </listeners>
+    <!-- Define a test block -->
+    <test name="SmokeTests">
+        <classes>
+            <!-- Add your test classes here -->
+            <class name="TestScripts.AccountDependentTests">
+            </class>
+           <class name="TestScripts.AccountIndependentTests">
+
+            </class>
+        </classes>
+    </test>
+</suite>
