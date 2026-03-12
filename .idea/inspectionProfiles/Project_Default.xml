@@ -4,5 +4,19 @@
     <inspection_tool class="ExtractMethodRecommender" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="minLength" value="806" />
     </inspection_tool>
+    <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="groups">
+        <value>
+          <list size="6">
+            <item index="0" class="java.lang.String" itemvalue="API" />
+            <item index="1" class="java.lang.String" itemvalue="Products" />
+            <item index="2" class="java.lang.String" itemvalue="Brands" />
+            <item index="3" class="java.lang.String" itemvalue="Search" />
+            <item index="4" class="java.lang.String" itemvalue="Account_Lifecycle" />
+            <item index="5" class="java.lang.String" itemvalue="Authentication" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

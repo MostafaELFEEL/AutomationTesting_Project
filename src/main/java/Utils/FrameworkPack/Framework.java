@@ -12,15 +12,15 @@ import java.nio.file.Files;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
-import java.util.Set;
+//import java.util.Objects;
+//import java.util.Set;
 
 public class Framework {
 
     // ThreadLocal declarations isolate these objects for each running thread
-    private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private ThreadLocal<WebDriverWait> wait = new ThreadLocal<>();
-    private ThreadLocal<Actions> action = new ThreadLocal<>();
+    private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private final ThreadLocal<WebDriverWait> wait = new ThreadLocal<>();
+    private final ThreadLocal<Actions> action = new ThreadLocal<>();
 
     // --- Getters for ThreadLocal variables ---
     public WebDriver getDriver() {
@@ -60,37 +60,37 @@ public class Framework {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
     }
 
-    // 3.
-    @SuppressWarnings("null")
-    public void explicitWait(By locator) {
-        getWait().until(ExpectedConditions.presenceOfElementLocated(locator));
-    }
-
-    @SuppressWarnings("null")
-    public void waitForVisibility(By locator) {
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    @SuppressWarnings("null")
-    public boolean isElementVisible(By locator) {
-        try {
-            return getDriver().findElement(locator).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    // 4. fluentWait
-    @SuppressWarnings("null")
-    public void fluentWait(By locator, int timeoutSeconds, int pollingMillis, String timeoutMessage) {
-        Wait<WebDriver> fluentWait = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(timeoutSeconds))
-                .pollingEvery(Duration.ofMillis(pollingMillis))
-                .ignoring(NoSuchElementException.class)
-                .withMessage(timeoutMessage);
-
-        fluentWait.until(webDriver -> webDriver.findElement(locator));
-    }
+//    // 3.
+//    @SuppressWarnings("null")
+//    public void explicitWait(By locator) {
+//        getWait().until(ExpectedConditions.presenceOfElementLocated(locator));
+//    }
+//
+//    @SuppressWarnings("null")
+//    public void waitForVisibility(By locator) {
+//        getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+//    }
+//
+//    @SuppressWarnings("null")
+//    public boolean isElementVisible(By locator) {
+//        try {
+//            return getDriver().findElement(locator).isDisplayed();
+//        } catch (NoSuchElementException e) {
+//            return false;
+//        }
+//    }
+//
+//    // 4. fluentWait
+//    @SuppressWarnings("null")
+//    public void fluentWait(By locator, int timeoutSeconds, int pollingMillis, String timeoutMessage) {
+//        Wait<WebDriver> fluentWait = new FluentWait<>(getDriver())
+//                .withTimeout(Duration.ofSeconds(timeoutSeconds))
+//                .pollingEvery(Duration.ofMillis(pollingMillis))
+//                .ignoring(NoSuchElementException.class)
+//                .withMessage(timeoutMessage);
+//
+//        fluentWait.until(webDriver -> webDriver.findElement(locator));
+//    }
 
     // --- Navigation ---
 
@@ -106,10 +106,10 @@ public class Framework {
         getWait().until(ExpectedConditions.urlToBe(url));
     }
 
-    // 6. Return the current page title
-    public String getPageTitle() {
-        return getDriver().getTitle();
-    }
+//    // 6. Return the current page title
+//    public String getPageTitle() {
+//        return getDriver().getTitle();
+//    }
 
     // 7. Return the current page URL
     public String getCurrentURL() {
@@ -137,13 +137,13 @@ public class Framework {
         throw new RuntimeException("Failed to click element after retries: " + locator);
     }
 
-    // 9. Perform a right-click (context click) on an element
-    @SuppressWarnings("null")
-    public void rightClick(By locator) {
-        @SuppressWarnings("null")
-        WebElement element = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-        getAction().contextClick(element).perform();
-    }
+//    // 9. Perform a right-click (context click) on an element
+//    @SuppressWarnings("null")
+//    public void rightClick(By locator) {
+//        @SuppressWarnings("null")
+//        WebElement element = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+//        getAction().contextClick(element).perform();
+//    }
 
     // 10. Send keys (text) to an element
     public void sendKeys(By locator, String text) {
@@ -160,43 +160,43 @@ public class Framework {
         return element.getText();
     }
 
-    // 12. selectDropdownByVisibleText
-    public void selectDropdownByVisibleText(By locator, String visibleText) {
-        @SuppressWarnings("null")
-        WebElement dropdown = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-        Select select = new Select(dropdown);
-        select.selectByVisibleText(visibleText);
-    }
-
-    // 13. Select a dropdown option by value attribute
-    public void selectDropdownByValue(By locator, String value) {
-        @SuppressWarnings("null")
-        WebElement dropdown = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-        Select select = new Select(dropdown);
-        select.selectByValue(value);
-    }
+//    // 12. selectDropdownByVisibleText
+//    public void selectDropdownByVisibleText(By locator, String visibleText) {
+//        @SuppressWarnings("null")
+//        WebElement dropdown = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+//        Select select = new Select(dropdown);
+//        select.selectByVisibleText(visibleText);
+//    }
+//
+//    // 13. Select a dropdown option by value attribute
+//    public void selectDropdownByValue(By locator, String value) {
+//        @SuppressWarnings("null")
+//        WebElement dropdown = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+//        Select select = new Select(dropdown);
+//        select.selectByValue(value);
+//    }
 
     public void clickAtZeroZero() {
         getAction().moveByOffset(1, 1).click().perform();
     }
 
     // 14. Select a dropdown option by index
-    public void selectDropdownByIndex(By locator, int index) {
-        @SuppressWarnings("null")
-        WebElement dropdown = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-        Select select = new Select(dropdown);
-        select.selectByIndex(index);
-    }
-
-    // 15. Drag source element and drop it on target element
-    @SuppressWarnings("null")
-    public void dragAndDrop(By sourceLocator, By targetLocator) {
-        @SuppressWarnings("null")
-        WebElement source = getWait().until(ExpectedConditions.visibilityOfElementLocated(sourceLocator));
-        @SuppressWarnings("null")
-        WebElement target = getWait().until(ExpectedConditions.visibilityOfElementLocated(targetLocator));
-        getAction().dragAndDrop(source, target).perform();
-    }
+//    public void selectDropdownByIndex(By locator, int index) {
+//        @SuppressWarnings("null")
+//        WebElement dropdown = getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+//        Select select = new Select(dropdown);
+//        select.selectByIndex(index);
+//    }
+//
+//    // 15. Drag source element and drop it on target element
+//    @SuppressWarnings("null")
+//    public void dragAndDrop(By sourceLocator, By targetLocator) {
+//        @SuppressWarnings("null")
+//        WebElement source = getWait().until(ExpectedConditions.visibilityOfElementLocated(sourceLocator));
+//        @SuppressWarnings("null")
+//        WebElement target = getWait().until(ExpectedConditions.visibilityOfElementLocated(targetLocator));
+//        getAction().dragAndDrop(source, target).perform();
+//    }
 
     // 16. Check a checkbox if not already checked
     public void checkCheckbox(By locator) {
@@ -207,69 +207,69 @@ public class Framework {
         }
     }
 
-    // 17. Uncheck a checkbox if currently checked
-    public void uncheckCheckbox(By locator) {
-        @SuppressWarnings("null")
-        WebElement checkbox = getWait().until(ExpectedConditions.elementToBeClickable(locator));
-        if (checkbox.isSelected()) {
-            checkbox.click();
-        }
-    }
-
-    // 18. Select a radio button if not already selected
-    public void selectRadioButton(By locator) {
-        @SuppressWarnings("null")
-        WebElement radioButton = getWait().until(ExpectedConditions.elementToBeClickable(locator));
-        if (!radioButton.isSelected()) {
-            radioButton.click();
-        }
-    }
-
-    // --- Window & Alert Handling ---
-
-    // 19. Switch browser window focus to window with given title
-    @SuppressWarnings("null")
-    public void switchToWindowByTitle(String windowTitle) {
-        Set<String> allWindows = getDriver().getWindowHandles();
-        for (String handle : allWindows) {
-            getDriver().switchTo().window(handle);
-            if (Objects.equals(getDriver().getTitle(), windowTitle)) {
-                return; // Found the window
-            }
-        }
-        throw new NoSuchWindowException("Window with title '" + windowTitle + "' not found.");
-    }
-
-    // 20. Switch browser window focus to window with given handle if it exists
-    @SuppressWarnings("null")
-    public void switchToWindowByHandle(String windowHandle) {
-        Set<String> allWindows = getDriver().getWindowHandles();
-        if (allWindows.contains(windowHandle)) {
-            getDriver().switchTo().window(windowHandle);
-        } else {
-            throw new NoSuchWindowException("Window with handle '" + windowHandle + "' not found.");
-        }
-    }
-
-    // 21. Close the currently focused window
-    public void closeCurrentWindow() {
-        getDriver().close();
-    }
-
-    // 22. Navigate back in browser history
-    public void navigateBack() {
-        getDriver().navigate().back();
-    }
-
-    // 23. Navigate forward in browser history
-    public void navigateForward() {
-        getDriver().navigate().forward();
-    }
-
-    // 24. Refresh the current page
-    public void refreshPage() {
-        getDriver().navigate().refresh();
-    }
+//    // 17. Uncheck a checkbox if currently checked
+//    public void uncheckCheckbox(By locator) {
+//        @SuppressWarnings("null")
+//        WebElement checkbox = getWait().until(ExpectedConditions.elementToBeClickable(locator));
+//        if (checkbox.isSelected()) {
+//            checkbox.click();
+//        }
+//    }
+//
+//    // 18. Select a radio button if not already selected
+//    public void selectRadioButton(By locator) {
+//        @SuppressWarnings("null")
+//        WebElement radioButton = getWait().until(ExpectedConditions.elementToBeClickable(locator));
+//        if (!radioButton.isSelected()) {
+//            radioButton.click();
+//        }
+//    }
+//
+//    // --- Window & Alert Handling ---
+//
+//    // 19. Switch browser window focus to window with given title
+//    @SuppressWarnings("null")
+//    public void switchToWindowByTitle(String windowTitle) {
+//        Set<String> allWindows = getDriver().getWindowHandles();
+//        for (String handle : allWindows) {
+//            getDriver().switchTo().window(handle);
+//            if (Objects.equals(getDriver().getTitle(), windowTitle)) {
+//                return; // Found the window
+//            }
+//        }
+//        throw new NoSuchWindowException("Window with title '" + windowTitle + "' not found.");
+//    }
+//
+//    // 20. Switch browser window focus to window with given handle if it exists
+//    @SuppressWarnings("null")
+//    public void switchToWindowByHandle(String windowHandle) {
+//        Set<String> allWindows = getDriver().getWindowHandles();
+//        if (allWindows.contains(windowHandle)) {
+//            getDriver().switchTo().window(windowHandle);
+//        } else {
+//            throw new NoSuchWindowException("Window with handle '" + windowHandle + "' not found.");
+//        }
+//    }
+//
+//    // 21. Close the currently focused window
+//    public void closeCurrentWindow() {
+//        getDriver().close();
+//    }
+//
+//    // 22. Navigate back in browser history
+//    public void navigateBack() {
+//        getDriver().navigate().back();
+//    }
+//
+//    // 23. Navigate forward in browser history
+//    public void navigateForward() {
+//        getDriver().navigate().forward();
+//    }
+//
+//    // 24. Refresh the current page
+//    public void refreshPage() {
+//        getDriver().navigate().refresh();
+//    }
 
     // 25. Scroll viewport to bring the element into view
     @SuppressWarnings("null")
@@ -279,32 +279,32 @@ public class Framework {
         getAction().scrollToElement(element).perform();
     }
 
-    // 26. Accept (click OK on) an active JavaScript alert
-    public void acceptAlert() {
-        getWait().until(ExpectedConditions.alertIsPresent());
-        getDriver().switchTo().alert().accept();
-    }
-
-    // 27. Dismiss (click Cancel on) an active JavaScript alert
-    public void dismissAlert() {
-        getWait().until(ExpectedConditions.alertIsPresent());
-        getDriver().switchTo().alert().dismiss();
-    }
-
-    // 28. Get the text content of an active JavaScript alert
-    public String getAlertText() {
-        getWait().until(ExpectedConditions.alertIsPresent());
-        return getDriver().switchTo().alert().getText();
-    }
-
-    // 29. Send text input to a prompt alert and accept it
-    @SuppressWarnings("null")
-    public void sendTextToAlert(String text) {
-        getWait().until(ExpectedConditions.alertIsPresent());
-        Alert alert = getDriver().switchTo().alert();
-        alert.sendKeys(text);   // type into the prompt
-        alert.accept();         // click OK
-    }
+//    // 26. Accept (click OK on) an active JavaScript alert
+//    public void acceptAlert() {
+//        getWait().until(ExpectedConditions.alertIsPresent());
+//        getDriver().switchTo().alert().accept();
+//    }
+//
+//    // 27. Dismiss (click Cancel on) an active JavaScript alert
+//    public void dismissAlert() {
+//        getWait().until(ExpectedConditions.alertIsPresent());
+//        getDriver().switchTo().alert().dismiss();
+//    }
+//
+//    // 28. Get the text content of an active JavaScript alert
+//    public String getAlertText() {
+//        getWait().until(ExpectedConditions.alertIsPresent());
+//        return getDriver().switchTo().alert().getText();
+//    }
+//
+//    // 29. Send text input to a prompt alert and accept it
+//    @SuppressWarnings("null")
+//    public void sendTextToAlert(String text) {
+//        getWait().until(ExpectedConditions.alertIsPresent());
+//        Alert alert = getDriver().switchTo().alert();
+//        alert.sendKeys(text);   // type into the prompt
+//        alert.accept();         // click OK
+//    }
 
     // --- Utilities ---
 
@@ -349,20 +349,20 @@ public class Framework {
     }
 
     @SuppressWarnings("null")
-    public By setLocatorXpath(String locator) {
-        return By.xpath(locator);
-    }
-
-    public void actionSendKey(Keys key) {
-        getAction().sendKeys(key).perform();
-    }
-
-    @SuppressWarnings("null")
-    public void actionLeftClick(By locator) {
-        @SuppressWarnings("null")
-        WebElement element = getWait().until(ExpectedConditions.elementToBeClickable(locator));
-        getAction().click(element).perform();
-    }
+//    public By setLocatorXpath(String locator) {
+//        return By.xpath(locator);
+//    }
+//
+//    public void actionSendKey(Keys key) {
+//        getAction().sendKeys(key).perform();
+//    }
+//
+//    @SuppressWarnings("null")
+//    public void actionLeftClick(By locator) {
+//        @SuppressWarnings("null")
+//        WebElement element = getWait().until(ExpectedConditions.elementToBeClickable(locator));
+//        getAction().click(element).perform();
+//    }
 
     public void handleAlert(boolean accept) {
         Alert alert = getWait().until(ExpectedConditions.alertIsPresent());
