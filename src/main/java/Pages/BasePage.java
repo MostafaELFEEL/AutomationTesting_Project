@@ -11,7 +11,7 @@ public class BasePage {
 
     protected final static String URL = ConfigLoader.getProperty("baseUrl").toLowerCase();
     protected final static int timeout = Integer.parseInt(ConfigLoader.getProperty("timeout"));
-    protected final static String rootPath = ConfigLoader.getProperty("rootPath");
+    //protected final static String rootPath = ConfigLoader.getProperty("rootPath");
 
     // Common locators (Safe to be static because they are 'final' constants)
     protected final static By footerLocator = By.id("footer");

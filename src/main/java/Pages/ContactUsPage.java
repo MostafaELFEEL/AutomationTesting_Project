@@ -21,7 +21,7 @@ public class ContactUsPage extends BasePage {
         framework.sendKeys(emailTextboxLocator, userProfile.getEmail());
         framework.sendKeys(subjectTextboxLocator,"subject");
         framework.sendKeys(messageTextboxLocator,"message");
-        framework.sendKeys(uploadFileLocator, rootPath + "\\testfile.txt");
+        framework.sendKeys(uploadFileLocator, System.getProperty("user.dir") + "\\testfile.txt");
         framework.click(submitButtonLocator);
         framework.handleAlert(true);
     }
