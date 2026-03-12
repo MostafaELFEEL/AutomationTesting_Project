@@ -1,0 +1,1 @@
+{"responseCode": 200, "user": {"id": 1449892, "name": "tomsmith", "email": "tomsmith@edges.com", "title": "Mr.", "birth_day": "15", "birth_month": "July", "birth_year": "2000", "first_name": "tom", "last_name": "smith", "company": "edges", "address1": "edges", "address2": "edges", "country": "India", "state": "edges", "city": "edges", "zipcode": "00000"}}

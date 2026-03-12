@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="System Tests">
+<suite name="API Tests">
 
     <listeners>
         <listener class-name="TestHelperPack.TestListener"/>
