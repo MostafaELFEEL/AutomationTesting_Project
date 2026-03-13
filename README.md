@@ -30,6 +30,63 @@ Engineered for extreme performance, this framework utilizes strictly isolated `T
 * **Centralized Configuration:** Driven by a custom `ConfigLoader` parsing a `config.properties` file for plug-and-play browser selection, headless modes, and environment management.
 * **Comprehensive Reporting:** Automated, step-by-step historical tracking using **Allure**, including automatic HTML-stripping for API payloads and automated screenshot attachments for UI test failures.
 
+## 📂 Project Structure
+```text
++---main
+|   +---java
+|   |   +---org
+|   |   |   \---main
+|   |   |           Main.java
+|   |   |
+|   |   +---Pages
+|   |   |       AccountCreatedPage.java
+|   |   |       AccountDeletedPage.java
+|   |   |       BasePage.java
+|   |   |       BrandProductsPage.java
+|   |   |       CartsPage.java
+|   |   |       CategoryProductsPage.java
+|   |   |       CheckoutPage.java
+|   |   |       ContactUsPage.java
+|   |   |       LoginPage.java
+|   |   |       PaymentDonePage.java
+|   |   |       PaymentPage.java
+|   |   |       ProductDetailPage.java
+|   |   |       ProductsPage.java
+|   |   |       SignupPage.java
+|   |   |       TestCasesPage.java
+|   |   |
+|   |   +---TestingData
+|   |   |       FalseUserProfiles.json
+|   |   |       UserProfiles.json
+|   |   |
+|   |   \---Utils
+|   |       +---FrameworkPack
+|   |       |       Framework.java
+|   |       |
+|   |       +---HelperPack
+|   |       |       ConfigLoader.java
+|   |       |       HelperClass.java
+|   |       |
+|   |       \---PojoPack
+|   |               UserProfile.java
+|   |
+|   \---resources
+\---test
+    +---java
+       +---TestDataProvider
+       |       TestDataProvider.java
+       |
+       +---TestHelperPack
+       |       RetryAnalyzer.java
+       |       TestListener.java
+       |
+       \---TestScripts
+               AccountDependentTests.java
+               AccountIndependentTests.java
+               APITests.java
+               BaseTest.java
+    
+```
 ## 🚀 Getting Started
 
 ### Prerequisites
