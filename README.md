@@ -22,6 +22,7 @@ Engineered for extreme performance, this framework utilizes strictly isolated `T
 * **Reporting:** Allure Reports
 
 ## 🏗 Architectural Highlights
+* **Custom-Built Framework:** Designed and developed the entire automation architecture from the ground up to serve as a robust, scalable foundation for enterprise QA.
 * **Zero-Config Portability:** Dynamic pathing.
 * **Hybrid Execution Flow:** Seamless integration of UI and API test execution. API tests execute stateful, data-driven CRUD lifecycles in strict priority before releasing 12 parallel threads for the UI suite to prevent data collisions.
 * **True Parallel Execution:** WebDriver and Page Object instances are wrapped in `ThreadLocal` to ensure zero data bleeding, session collisions, or `NullPointerExceptions` during heavy multi-threaded execution.
