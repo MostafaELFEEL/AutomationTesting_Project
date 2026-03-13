@@ -22,7 +22,7 @@ Engineered for extreme performance, this framework utilizes strictly isolated `T
 * **Reporting:** Allure Reports
 
 ## 🏗 Architectural Highlights
-* **Zero-Config Portability:** Dynamic pathing utilizing `System.getProperty("user.dir")`. Clone the repository and it runs instantly on Windows, Mac, or Linux without hardcoding local root paths.
+* **Zero-Config Portability:** Dynamic pathing.
 * **Hybrid Execution Flow:** Seamless integration of UI and API test execution. API tests execute stateful, data-driven CRUD lifecycles in strict priority before releasing 12 parallel threads for the UI suite to prevent data collisions.
 * **True Parallel Execution:** WebDriver and Page Object instances are wrapped in `ThreadLocal` to ensure zero data bleeding, session collisions, or `NullPointerExceptions` during heavy multi-threaded execution.
 * **Flakiness Eradicated:** Eliminated static `Thread.sleep()` in favor of smart, timeout-based waits. Includes a custom TestNG `RetryAnalyzer` to automatically catch and rescue UI rendering timeouts.
@@ -40,7 +40,7 @@ Engineered for extreme performance, this framework utilizes strictly isolated `T
 ### Installation
 Clone the repository:
 ```bash
-git clone [https://github.com/MostafaELFEEL/AutomationTesting_Project.git](https://github.com/MostafaELFEEL/AutomationTesting_Project.git)
+git clone https://github.com/MostafaELFEEL/AutomationTesting_Project.git
 
 ```
 
