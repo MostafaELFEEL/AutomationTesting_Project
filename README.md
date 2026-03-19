@@ -32,59 +32,24 @@ Engineered for extreme performance, this framework utilizes strictly isolated `T
 
 ## 📂 Project Structure
 ```text
-+---main
-|   +---java
-|   |   +---org
-|   |   |   \---main
-|   |   |           Main.java
-|   |   |
-|   |   +---Pages
-|   |   |       AccountCreatedPage.java
-|   |   |       AccountDeletedPage.java
-|   |   |       BasePage.java
-|   |   |       BrandProductsPage.java
-|   |   |       CartsPage.java
-|   |   |       CategoryProductsPage.java
-|   |   |       CheckoutPage.java
-|   |   |       ContactUsPage.java
-|   |   |       LoginPage.java
-|   |   |       PaymentDonePage.java
-|   |   |       PaymentPage.java
-|   |   |       ProductDetailPage.java
-|   |   |       ProductsPage.java
-|   |   |       SignupPage.java
-|   |   |       TestCasesPage.java
-|   |   |
-|   |   +---TestingData
-|   |   |       FalseUserProfiles.json
-|   |   |       UserProfiles.json
-|   |   |
-|   |   \---Utils
-|   |       +---FrameworkPack
-|   |       |       Framework.java
-|   |       |
-|   |       +---HelperPack
-|   |       |       ConfigLoader.java
-|   |       |       HelperClass.java
-|   |       |
-|   |       \---PojoPack
-|   |               UserProfile.java
-|   |
-|   \---resources
-\---test
-    +---java
-       +---TestDataProvider
-       |       TestDataProvider.java
-       |
-       +---TestHelperPack
-       |       RetryAnalyzer.java
-       |       TestListener.java
-       |
-       \---TestScripts
-               AccountDependentTests.java
-               AccountIndependentTests.java
-               APITests.java
-               BaseTest.java
+src
+├── main
+│   ├── java
+│   │   └── org
+│   │       └── automation
+│   │           ├── model         (formerly PojoPack)
+│   │           ├── pages         (all Page Objects)
+│   │           └── utils         (Framework, Config, Helpers)
+│   └── resources
+│       └── test_data             (UserProfiles.json, etc.)
+└── test
+    ├── java
+    │   └── org
+    │       └── automation
+    │           ├── dataprovider
+    │           ├── listeners    (RetryAnalyzer, TestListener)
+    │           └── TestScripts
+    └── resources
     
 ```
 ## 🚀 Getting Started
