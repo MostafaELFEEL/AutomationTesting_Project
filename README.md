@@ -48,7 +48,7 @@ src
     │       └── automation
     │           ├── dataprovider
     │           ├── listeners    (RetryAnalyzer, TestListener)
-    │           └── TestScripts
+    │           └── Tests
     └── resources
     
 ```

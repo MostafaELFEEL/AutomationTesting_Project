@@ -1,4 +1,4 @@
-package TestScripts;
+package Tests;
 
 import Pages.*;
 import TestDataProvider.TestDataProvider;
@@ -10,25 +10,7 @@ import org.testng.annotations.*;
 
 public class AccountIndependentTests extends BaseTest {
 
-    // --- Configuration Methods ---
 
-    @BeforeMethod
-    @Step("Setup: Launch browser and navigate to Home Page")
-    public void beforeMethod() {
-        BasePage page =  new BasePage(); // ✅ FIXED: Hooks into ThreadLocal
-        page.openBrowser();
-        page = page.goToHomePage();
-        // 3. Verify that home page is visible successfully
-        Assert.assertEquals(page.actualURL(), page.expectedURL(), "Home page URL mismatch");
-    }
-
-    @AfterMethod
-    @Step("Teardown: Close browser")
-    public void afterMethod() {
-        BasePage page =  new BasePage(); // ✅ FIXED: Hooks into ThreadLocal
-        page.takeScreenShot();
-        page.closeBrowser();
-    }
 
     // --- Helper Methods ---
 

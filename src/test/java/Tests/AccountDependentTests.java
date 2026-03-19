@@ -1,4 +1,4 @@
-package TestScripts;
+package Tests;
 
 import Pages.*;
 import TestDataProvider.TestDataProvider;
@@ -54,26 +54,6 @@ public class AccountDependentTests extends BaseTest {
 
             page.closeBrowser();
         }
-    }
-
-    @BeforeMethod(description = "Setup: Launch browser and navigate to home page")
-    public void beforeMethod() {
-        BasePage page = new BasePage(); // ✅ FIXED: Local instance hooks into ThreadLocal
-        // 1. Launch browser
-        page.openBrowser();
-
-        // 2. Navigate to url 'http://automationexercise.com'
-        page = page.goToHomePage();
-
-        // 3. Verify that home page is visible successfully
-        Assert.assertEquals(page.actualURL(), page.expectedURL(), "Home page URL mismatch.");
-    }
-
-    @AfterMethod(description = "Teardown: Close browser")
-    public void afterMethod() {
-        BasePage page = new BasePage(); // ✅ FIXED: Local instance hooks into ThreadLocal
-        page.takeScreenShot();
-        page.closeBrowser();
     }
 
     // --- Helper Methods ---

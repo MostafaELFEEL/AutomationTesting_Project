@@ -7,7 +7,7 @@
 
     <test name="API Execution" preserve-order="true">
         <classes>
-            <class name="TestScripts.APITests"/>
+            <class name="Tests.APITests"/>
         </classes>
     </test>
 

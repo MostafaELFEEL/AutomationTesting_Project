@@ -7,19 +7,19 @@
 
     <test name="API Execution" preserve-order="true">
         <classes>
-            <class name="TestScripts.APITests"/>
+            <class name="Tests.APITests"/>
         </classes>
     </test>
 
     <test name="Account Dependent Execution" parallel="methods" thread-count="12">
         <classes>
-            <class name="TestScripts.AccountDependentTests"/>
+            <class name="Tests.AccountDependentTests"/>
         </classes>
     </test>
 
     <test name="Account Independent Execution" parallel="methods" thread-count="12">
         <classes>
-            <class name="TestScripts.AccountIndependentTests"/>
+            <class name="Tests.AccountIndependentTests"/>
         </classes>
     </test>
 
