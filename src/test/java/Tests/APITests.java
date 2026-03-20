@@ -6,12 +6,18 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 @Epic("API Testing")
 public class APITests extends BaseTest {
 
     // --- Configuration ---
+@Override
+public void beforeMethod(){}
+
+    @Override
+    public void afterMethod(){}
 
     @BeforeClass
     @Step("Setup: Initialize Base URI for API Tests")

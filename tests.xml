@@ -11,13 +11,13 @@
         </classes>
     </test>
 
-    <test name="Account Dependent Execution" parallel="methods" thread-count="12">
+    <test name="Account Dependent Execution" parallel="methods" thread-count="10">
         <classes>
             <class name="Tests.AccountDependentTests"/>
         </classes>
     </test>
 
-    <test name="Account Independent Execution" parallel="methods" thread-count="12">
+    <test name="Account Independent Execution" parallel="methods" thread-count="10">
         <classes>
             <class name="Tests.AccountIndependentTests"/>
         </classes>
